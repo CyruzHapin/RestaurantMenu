@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Model;
 using BusinessLayer;
+using DataLayer;
 
 namespace RestaurantMenu
 {
@@ -9,32 +10,50 @@ namespace RestaurantMenu
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("What meal do you want to see?");
-            Console.WriteLine("Enter Meal number: ");
-            string meal = Console.ReadLine();
-            DisplayMealNumInfo(meal);
+
+            SqlDbData.AddUser("Porkchop", "Meal 8", "119 Pesos", "Sprite");          
+
+            GetUsers();
         }
 
-        public static void DisplayMealNumInfo( string stringmeal)
+        public static void GetUsers()
         {
-            Services businessServices = new Services();
-            List<Menu> foundMenus = businessServices.GetMenusByMealNum(stringmeal);
+            List<Menu> infoFromDB = SqlDbData.GetUsers();
 
-            if(foundMenus.Count > 0)
+            foreach (var item in infoFromDB)
             {
-                Console.WriteLine($"Found meal for {stringmeal}(s):");
-                for (int i = 0; i < foundMenus.Count; i++)
-                {
-                    Console.WriteLine($"Description: {foundMenus[i].Description}");
-                    Console.WriteLine($"Meal: {foundMenus[i].Meal}");
-                    Console.WriteLine($"Price: {foundMenus[i].Price}");
-                    Console.WriteLine($"Drinks: {foundMenus[i].Drinks}");
-                }
+                Console.WriteLine(item.Description);
+                Console.WriteLine(item.Meal);
+                Console.WriteLine(item.Price);
+                Console.WriteLine(item.Drinks);
             }
-            else
-            {
-                Console.WriteLine("No Meal Information for the specified Meal Number");
-            }
+            //Console.WriteLine("What meal do you want to see?");
+            //Console.WriteLine("Enter Meal number: ");
+            // string meal = Console.ReadLine();
+            //  DisplayMealNumInfo(meal);
+            // }
+
+            //    public static void DisplayMealNumInfo( string stringmeal)
+            //   {
+            //  Services businessServices = new Services();
+            //   List<Menu> foundMenus = businessServices.GetMenusByMealNum(stringmeal);
+
+            //   if(foundMenus.Count > 0)
+            //  {
+            //   Console.WriteLine($"Found meal for {stringmeal}(s):");
+            //   for (int i = 0; i < foundMenus.Count; i++)
+            //  {
+            //  Console.WriteLine($"Description: {foundMenus[i].Description}");
+            //   Console.WriteLine($"Meal: {foundMenus[i].Meal}");
+            //  Console.WriteLine($"Price: {foundMenus[i].Price}");
+            //    Console.WriteLine($"Drinks: {foundMenus[i].Drinks}");
+            //  }
+            //    }
+            // else
+            //     {
+            //   Console.WriteLine("No Meal Information for the specified Meal Number");
+            //    }
         }
     }
+
 }
