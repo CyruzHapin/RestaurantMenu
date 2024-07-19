@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "..\Model\Model.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "..\BusinessLayer\BusinessLayer.csproj", "{A8BBF45D-5F75-47FE-AAD4-0526CA96C1CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "..\DataLayer\DataLayer.csproj", "{A59162E9-9825-444F-85D1-A45186E756C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "..\DataLayer\DataLayer.csproj", "{A59162E9-9825-444F-85D1-A45186E756C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantMenuAPI", "..\RestaurantMenuAPI\RestaurantMenuAPI.csproj", "{5CBC68D9-420E-4DBD-A914-754D9C4C90C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A59162E9-9825-444F-85D1-A45186E756C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A59162E9-9825-444F-85D1-A45186E756C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A59162E9-9825-444F-85D1-A45186E756C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CBC68D9-420E-4DBD-A914-754D9C4C90C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CBC68D9-420E-4DBD-A914-754D9C4C90C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CBC68D9-420E-4DBD-A914-754D9C4C90C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CBC68D9-420E-4DBD-A914-754D9C4C90C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

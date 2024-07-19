@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Model;
 using BusinessLayer;
 using DataLayer;
+using System.Data.SqlClient;
 
 namespace RestaurantMenu
 {
@@ -10,10 +11,69 @@ namespace RestaurantMenu
     {
         static void Main(string[] args)
         {
+            //SqlDbData.Connect();
 
-            SqlDbData.AddUser("Porkchop", "Meal 8", "119 Pesos", "Sprite");          
+            bool active = true;
+            while (active)
+            {
+                Console.WriteLine("Restaurant Menu Management");
+                Console.WriteLine("What would you like to do?");
+                Console.WriteLine("1. Add a new menu item");
+                Console.WriteLine("2. Delete a menu item");
+                Console.WriteLine("3. View all menu items");
+                Console.WriteLine("4. Exit");
 
-            GetUsers();
+                Console.WriteLine("Enter the number:");
+                string number = Console.ReadLine();
+
+                if (number == "1")
+                {
+                    Console.WriteLine("Enter Description:");
+                    string description = Console.ReadLine();
+
+                    Console.WriteLine("Enter Meal:");
+                    string meal = Console.ReadLine();
+
+                    Console.WriteLine("Enter Price:");
+                    string price = Console.ReadLine();
+
+                    Console.WriteLine("Enter Drinks:");
+                    string drinks = Console.ReadLine();
+
+                    SqlDbData.AddUser(description, meal, price, drinks);
+                    Console.WriteLine("Menu item added successfully!");
+                }
+                else if (number == "2")
+                {
+                    Console.WriteLine("Enter Description of the item to delete:");
+                    string description = Console.ReadLine();
+
+                    Console.WriteLine("Enter Meal of the item to delete:");
+                    string meal = Console.ReadLine();
+
+                    Console.WriteLine("Enter Price of the item to delete:");
+                    string price = Console.ReadLine();
+
+                    Console.WriteLine("Enter Drinks of the item to delete:");
+                    string drinks = Console.ReadLine();
+
+                    SqlDbData.DeleteUser(description, meal, price, drinks);
+                    Console.WriteLine("Menu item deleted successfully!");
+                }
+                else if (number == "3")
+                {
+                    Console.WriteLine("Current menu items:");
+                    GetUsers();
+                }
+                else if (number == "4")
+                {
+                    active = false;
+                }
+                else
+                {
+                    Console.WriteLine("ERROR: Invalid selection. Please try again.");
+                }
+            }
         }
 
         public static void GetUsers()
@@ -22,38 +82,12 @@ namespace RestaurantMenu
 
             foreach (var item in infoFromDB)
             {
-                Console.WriteLine(item.Description);
-                Console.WriteLine(item.Meal);
-                Console.WriteLine(item.Price);
-                Console.WriteLine(item.Drinks);
+                Console.WriteLine("Description: " + item.Description);
+                Console.WriteLine("Meal: " + item.Meal);
+                Console.WriteLine("Price: " + item.Price);
+                Console.WriteLine("Drinks: " + item.Drinks);
+                Console.WriteLine();
             }
-            //Console.WriteLine("What meal do you want to see?");
-            //Console.WriteLine("Enter Meal number: ");
-            // string meal = Console.ReadLine();
-            //  DisplayMealNumInfo(meal);
-            // }
-
-            //    public static void DisplayMealNumInfo( string stringmeal)
-            //   {
-            //  Services businessServices = new Services();
-            //   List<Menu> foundMenus = businessServices.GetMenusByMealNum(stringmeal);
-
-            //   if(foundMenus.Count > 0)
-            //  {
-            //   Console.WriteLine($"Found meal for {stringmeal}(s):");
-            //   for (int i = 0; i < foundMenus.Count; i++)
-            //  {
-            //  Console.WriteLine($"Description: {foundMenus[i].Description}");
-            //   Console.WriteLine($"Meal: {foundMenus[i].Meal}");
-            //  Console.WriteLine($"Price: {foundMenus[i].Price}");
-            //    Console.WriteLine($"Drinks: {foundMenus[i].Drinks}");
-            //  }
-            //    }
-            // else
-            //     {
-            //   Console.WriteLine("No Meal Information for the specified Meal Number");
-            //    }
         }
     }
-
 }

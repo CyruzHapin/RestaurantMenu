@@ -9,7 +9,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj" />
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
     <ProjectReference Include="..\Model\Model.csproj" />
+    <ProjectReference Include="..\RestaurantMenuAPI\RestaurantMenuAPI.csproj" />
   </ItemGroup>
 
 </Project>
